@@ -1,0 +1,324 @@
+{% extends "account/base.html" %}
+
+{% load static %}
+{% load i18n %}
+{% load account %}
+
+{% block head_title %}{% translate "Confim E-mail Address" %}{% endblock %}
+
+
+{% block inner %}
+<h1>{% translate "Confirm E-mail Address" %}</h1>
+
+{% if confirmation %}
+
+{% user_display confirmation.email_address.user as user_display %}
+
+<p>{% blocktranslate with confirmation.email_address.email as email %}Please confirm that <a href="mailto:{{ email }}">{{ email }}</a> is an eail address for user {{ user_display }}.{% endblocktranslate %}</p>
+
+<form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+{% csrf_token %}
+    <button class="btn btn-primary" type="submit">{% translate 'Confirm' %}</button>
+</form>
+
+
+
+<div class="pb-5 pt-4">
+    <div class="container">
+       <div class="row">
+          <div class="col-lg-4 left ">
+             <div class="profile_info ">
+                <section class="seller-card">
+                   <div class="mb-3"><a href="#" class="ambassadors-badge">Profile strength 10%</a></div>
+                     <div class="user-profile-info">
+                      <input type="hidden" role="uploadcare-uploader" data-crop="1:1" data-images-only >
+                      
+                         <div class="user-profile-image">
+                            <label class="user-pict">
+                               <div class="progress">
+                                  
+                                  <div class="left"></div>
+                                  <div class="right"></div>
+                                  
+                                  
+                                  <img src="{% static 'images/default_profile.png' %}" id="preview" class="img-fluid user border-grey" alt="Elzubair">
+                                  <a href="#" class="user-badge-round user-badge-round-med locale-en-us top-rated-seller"></a>
+                               </div>
+                            </label>
+                         </div>
+
+                      </div>
+                      <div class="user-profile-label">
+                         <div class="username-line">
+                            <a href="#" class="seller-link">Elzubair Mohammed Saleh</a>
+                         </div>
+                         <a href="setting.html" class="btn btn-light mb-2 full-width border-grey-not-full mt-2 disabled not-allowed">Dashboard</a>
+                      </div>
+                  
+                   <div class="border-top pt-3">
+                      <article>
+                         <div class="d-flex">
+                            <b class="delivery green-color"><i class="fa fa-check ml-2" aria-hidden="true"></i> Email verified</b>
+                         </div>
+                         <div class="d-flex">
+                            <b class="delivery delivery-white"><i class="fa fa-times ml-2" aria-hidden="true"></i>  Payment Verified </b>
+                         </div>
+                         <div class="d-flex">
+                            <b class="delivery delivery-white"><i class="fa fa-times ml-2" aria-hidden="true"></i> Identity Verified</b>
+                         </div>
+                         <div class="d-flex">
+                            <b class="delivery delivery-white"><i class="fa fa-times ml-2" aria-hidden="true"></i> Trusted Mofid</b>
+                         </div>
+                      </article>
+                   </div>
+                </section>
+             </div>
+          </div>
+             <!-- <div class="contact-seller-wrapper">
+                <a class="fit-button" href="messages.html">قم بإضافة عمل لمعرضك
+                   <i class="fa fa-plus" aria-hidden="true"></i>   
+                </a>
+             </div>
+             <div class="contact-seller-wrapper">
+                <a class="fit-button" href="messages.html">قم بتوثيق الهوية
+                   <i class="fa fa-check-circle" aria-hidden="true"></i>   
+                </a>
+             </div> -->
+          <div class="col-lg-8 right">
+             <div class="box shadow-sm rounded bg-white mb-3">
+                <div class="alert alert-success" role="alert">
+                   <span class="fa fa-check"></span> Great! your account has been activated.
+                </div>
+             </div>
+             <div class="page-ath-wrap pb-3">
+                 <div class="card-body bg-white bg-white-dark border-grey-full br-1">
+                 
+                     <div class="page-ath-form ">
+                         <div class="form-align-box">
+                             <div class="wizard">
+                               <!--loader-- yieoyo-->
+                                    <div class="inbox-loader-container d-none">
+                                     <div class="inbox-loader-box">
+                                        <div class="inbox-loader-wait"></div>
+                                     </div>
+                                    </div>
+                               <!--loader-- yieoyo-->
+                                 <form role="form" action="index.html" class="register-wizard-box">
+                                     <div class="tab-content" id="main_form">
+                                         <div class="tab-pane active" role="tabpanel" id="step1">
+                                             <div class="form-input-steps">
+                                              <legend class="checkbox-group-legend">Choose your Username <span class=" red-color">*</span></legend>
+                                                 <div class="form-group">
+                                                    <input type="text" name="text" class="form-control text-align-left" placeholder="e.g. Harry Potter"></input>                                                      
+                                                 </div>
+                                             </div>
+                                             <button type="button" class="step-btn next-step"><span>Next</span></button>
+                                         </div>
+                                         <div class="tab-pane" role="tabpanel" id="step2">
+                                             <div class="form-input-steps">
+                                              <fieldset class="checkbox-group">
+                                                 <legend class="checkbox-group-legend">Choose your favorites  <span class=" red-color">*</span></legend>
+                                                 <div class="checkbox">
+                                                    <label class="checkbox-wrapper">
+                                                       <input type="checkbox" class="checkbox-input" />
+                                                       <span class="checkbox-tile">
+                                                          <span class="checkbox-icon checkbox-icon-1">
+                                                             
+                                                          </span>
+                                                          <span class="checkbox-label"><b>Mofid</b></span>
+                                                       </span>
+                                                    </label>
+                                                 </div>
+                                                 <div class="checkbox">
+                                                    <label class="checkbox-wrapper">
+                                                       <input type="checkbox" class="checkbox-input" />
+                                                       <span class="checkbox-tile">
+                                                          <span class="checkbox-icon checkbox-icon-2">
+                                                             
+                                                          </span>
+                                                          <span class="checkbox-label"><b>Boss</b></span>
+                                                       </span>
+                                                    </label>
+                                                 </div>
+                                              </fieldset>
+                                             </div>
+                                             <div class="btn-flex">
+                                                <button type="button" class="step-btn next-step nextt"><span>Next</span></button>
+                                                <button type="button" class="step-btn prev-step backk"><span>Back</span></button>
+                                             </div>
+                                         </div>
+                                         <div class="tab-pane" role="tabpanel" id="step3">
+                                            <center>
+
+                                              <div class="form-input-steps">
+                                                 <div class="form-input-steps-img"></div>
+                                                 <h3 class="form-input-steps-h3">Thanks for your time, you have successfully joined Mofidon.com</h3>
+                                                 <b class="form-input-steps-b">You will be redirected in <span id="clock">
+                                                    <span class="clock-span" id="seconds">5</span>
+                                                 </span>
+                                                  To your dashboard</b>
+                                             </div>
+                                            </center>
+                                         </div>
+                                         <div class="clearfix"></div>
+                                     </div>
+                                 </form>
+                                 <div class="wizard-inner">
+                                     <ul class="nav nav-tabs" role="tablist">
+                                         <li role="presentation" class="active">
+                                             <a href="#step1" class="active" data-toggle="tab" aria-controls="step1" role="tab" aria-expanded="true">
+                                              <span class=""></span>
+                                             </a>
+                                         </li>
+                                         <li role="presentation">
+                                             <a href="#step2" class="" data-toggle="tab" aria-controls="step2" role="tab" aria-expanded="false">
+                                              <span class=""></span>
+                                             </a>
+                                         </li>
+                                         <li role="presentation">
+                                             <a href="#step3" class="" data-toggle="tab" aria-controls="step3" role="tab">
+                                              <span class=""></span>
+                                             </a>
+                                         </li>
+                                     </ul>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+          </div>  
+       </div>
+    </div>
+ </div>
+
+
+
+ <script>
+    // ------------register-steps--------------
+$(document).ready(function () {
+$('.nav-tabs > li a[title]').tooltip();
+//Wizard
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+   var $target = $(e.target);
+   if ($target.hasClass('disabled')) {
+       return false;
+   }
+});
+
+$('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+   var $target = $(e.target);
+   $target.parent().addClass('active');
+});
+
+$('a[data-toggle="tab"]').on('hide.bs.tab', function (e) {
+   var $target = $(e.target);
+   $target.parent().removeClass('active');
+});
+
+
+$(".navbar-nav li.dropdown .dropdown-menu .dropdown-item").click(function (e) {
+$(".loader-container").removeClass("d-none");
+   setTimeout(function(){
+       $(".loader-container").addClass("d-none");
+   }, 4*1000);  
+
+});
+$(".next-step").click(function (e) {
+   $(".inbox-loader-container").removeClass("d-none");
+   setTimeout(function(){
+       var $active = $('.wizard .nav-tabs li a.active');
+       $active.parent().next().children().removeClass('disabled');
+       $active.parent().addClass('done');
+       $(".inbox-loader-container").addClass("d-none");
+       nextTab($active);
+   }, 4*1000);     
+});
+
+$(".prev-step").click(function (e) {
+   $(".inbox-loader-container").removeClass("d-none");
+   setTimeout(function(){
+       var $active = $('.wizard .nav-tabs li a.active');
+       $(".inbox-loader-container").addClass("d-none");
+       prevTab($active);
+   }, 4*1000);
+});
+
+function nextTab(elem) {
+if($(elem).parent().next().find('a[data-toggle="tab"]').attr('href') == "#step3"){
+   countdown();
+}
+$(elem).parent().next().find('a[data-toggle="tab"]').click();
+}
+function prevTab(elem) {
+$(elem).parent().prev().find('a[data-toggle="tab"]').click();
+}
+});
+ </script>
+
+
+ <!-- Countdown -->
+ <script>
+    timeLeft = 5;
+
+       function countdown() {
+          timeLeft--;
+          document.getElementById("seconds").innerHTML = String( timeLeft );
+          if (timeLeft > 0) {
+             setTimeout(countdown, 1000);
+          }
+       };
+       
+ </script>
+
+<script type="text/javascript">
+    // Getting an instance of the widget.
+    const widget = uploadcare.Widget('[role=uploadcare-uploader]');
+    // Selecting an image to be replaced with the uploaded one.
+    const preview = document.getElementById('preview');
+    // "onUploadComplete" lets you get file info once it has been uploaded.
+    // "cdnUrl" holds a URL of the uploaded file: to replace a preview with.
+    widget.onUploadComplete(fileInfo => {
+      preview.src = fileInfo.cdnUrl;
+    })
+ </script>
+<script type="text/javascript">
+   $(document).on("click", "#linkID span#fileAttachmentBtn", function(event){
+        event.preventDefault();
+       $("#uploadcare--widget__text .uploadcare--widget__file-name , button.uploadcare--widget__button_type_open").trigger("click");
+    });
+</script>
+
+<script>
+
+const chk = document.getElementById('chk');
+
+ 
+ // SOCIAL PANEL JS
+ const floating_btn = document.querySelector('.floating-btn');
+ const close_btn = document.querySelector('.close-btn');
+ const social_panel_container = document.querySelector('.social-panel-container');
+ 
+ floating_btn.addEventListener('click', () => {
+    social_panel_container.classList.toggle('visible')
+ });
+ 
+ close_btn.addEventListener('click', () => {
+    social_panel_container.classList.remove('visible')
+ });
+   
+</script>
+
+
+
+
+
+{% else %}
+
+{% url 'account_email' as email_url %}
+
+<p>{% blocktranslate %}This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.{% endblocktranslate %}</p>
+
+{% endif %}
+
+{% endblock %}
